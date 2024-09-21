@@ -2,7 +2,13 @@ import Modal from "react-modal";
 import { FaPhoneAlt, FaClock, FaHeart, FaRegWindowClose } from "react-icons/fa";
 import css from "./ImageModal.module.css";
 import formatFotoCreateDate from "../../utils/formatDate";
-import PropTypes from "prop-types";
+import {ModalData } from '../../App.types';
+
+interface ImageModalProps {
+  modalIsOpen: boolean;
+  closeModal: ()=>void; 
+  modalData: ModalData;
+}
 
 const customStyles = {
   overlay: {
@@ -18,7 +24,7 @@ const customStyles = {
   },
 };
 
-function ImageModal({ modalIsOpen, closeModal, modalData }) {
+const  ImageModal:React.FC<ImageModalProps>=({ modalIsOpen, closeModal, modalData })=> {
   Modal.setAppElement("#app");
   const {
     description,
@@ -29,6 +35,7 @@ function ImageModal({ modalIsOpen, closeModal, modalData }) {
     authorName,
     userSocial,
   } = modalData;
+  
   return (
     <div>
       <Modal
@@ -59,13 +66,13 @@ function ImageModal({ modalIsOpen, closeModal, modalData }) {
 
             <div className={css.stats}>
               <FaClock />
-              <p>{formatFotoCreateDate(createdAt)}</p>
+              <p>{(createdAt)?formatFotoCreateDate(createdAt):""}</p>
             </div>
             <div className={css.authorInfo}>
               <img alt="author_foto" src={userProfileImage} />
 
               <p>{authorName}</p>
-              <a href={userSocial} target="_blank">
+              <a href={(userSocial)?`${userSocial}`:""} target="_blank">
                 Portfolio
               </a>
             </div>
@@ -78,8 +85,3 @@ function ImageModal({ modalIsOpen, closeModal, modalData }) {
 
 export default ImageModal;
 
-ImageModal.propTypes = {
-  modalIsOpen: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  modalData: PropTypes.object.isRequired,
-};

@@ -28,20 +28,23 @@ export type Image = {
   urls: Urls;
   likes: number;
   created_at: string;
+  alt_description:string;
+
   user: User;
+
 
   [prop: string]: string | number | object | [] | boolean | null;
 };
 
 export interface ModalData {
     
-        description:string;
-        urlRegular: string;
-        likes: number;
-        createdAt: string;
-        userProfileImage: string,
-        authorName: string,
-        userSocial: string | null,
+        description?:string;
+        urlRegular?: string;
+        likes?: number;
+        createdAt?: string;
+        userProfileImage?: string,
+        authorName?: string,
+        userSocial?: string | null,
       
 }
 

@@ -21,7 +21,10 @@ function App() {
   const [imageModalIsOpen, setIsOpen] = useState<boolean>(false);
   const [imageModalData, setimageModalData] = useState<object>({});
 
-  const loadMoreButton = useRef<HTMLButtonElement>();
+  const loadMoreButton = useRef<HTMLButtonElement| null>(null);
+  
+
+  
 
   
   function closeimageModal():void {
@@ -98,10 +101,10 @@ function App() {
       <div className="loaderWrap">
         {loading && (
           <InfinitySpin
-            visible={true}
+            // visible={true}
             width="100"
             color="#4fa94d"
-            ariaLabel="infinity-spin-loading"
+            // ariaLabel="infinity-spin-loading"
           />
         )}
       </div>

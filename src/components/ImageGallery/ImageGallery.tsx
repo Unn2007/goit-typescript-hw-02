@@ -1,9 +1,14 @@
 import css from "./ImageGallery.module.css";
 import ImageCard from "../ImageCard/ImageCard";
-import PropTypes from "prop-types";
+import {ModalData,Image } from '../../App.types'
 
-function ImageGallery({ data, openModal }) {
-  const handleClick = (clickedImage) => {
+interface ImageGalleryProps {
+  data: Image[];
+  openModal:(data:ModalData)=>void
+}
+
+const  ImageGallery:React.FC<ImageGalleryProps>=({ data, openModal })=> {
+  const handleClick = (clickedImage:Image):void => {
     openModal({
       description: clickedImage.description,
       urlRegular: clickedImage.urls.regular,
@@ -28,7 +33,7 @@ function ImageGallery({ data, openModal }) {
             <ImageCard
               url={item.urls.small}
               alt={item.alt_description}
-              id={index}
+              id={`${index}`}
             />
           </li>
         );
@@ -39,7 +44,4 @@ function ImageGallery({ data, openModal }) {
 
 export default ImageGallery;
 
-ImageGallery.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  openModal: PropTypes.func.isRequired,
-};
+

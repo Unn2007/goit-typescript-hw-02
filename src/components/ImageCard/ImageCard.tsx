@@ -1,8 +1,12 @@
 import css from "./ImageCard.module.css";
-import PropTypes from "prop-types";
 
+interface ImageCardProps {
+  url:string; 
+  alt:string;
+  id:string;
+}
 
-function ImageCard({ url, alt, id }) {
+const ImageCard:React.FC<ImageCardProps>=({ url, alt, id })=> {
   
   return (
     
@@ -14,8 +18,4 @@ function ImageCard({ url, alt, id }) {
 
 export default ImageCard;
 
-ImageCard.propTypes = {
-  url: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-};
+

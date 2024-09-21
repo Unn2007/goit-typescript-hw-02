@@ -1,10 +1,25 @@
-import { forwardRef, useRef} from "react";
-const LoadMoreBtn = forwardRef(({searchMore}, ref) => {
+import { forwardRef, useRef,ForwardedRef} from "react";
+interface LoadMoreBtnProps {
+  searchMore:()=>void;
   
-  return (<button ref={ref} 
-    type="button" 
-    onClick={searchMore}>Load more</button>)
-});
+}
+
+const LoadMoreBtn = forwardRef<HTMLButtonElement, LoadMoreBtnProps>(
+  ({ searchMore }, ref: ForwardedRef<HTMLButtonElement>) => {
+    return (
+      <button ref={ref} type="button" onClick={searchMore}>
+        Load more
+      </button>
+    );
+  }
+);
+
+
+
+
+
+
+
 
 
 export default LoadMoreBtn;
