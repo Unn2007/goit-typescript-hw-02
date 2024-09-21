@@ -98,10 +98,10 @@ function App() {
       <div className="loaderWrap">
         {loading && (
           <InfinitySpin
-            // visible={true}
+            visible={true}
             width="100"
             color="#4fa94d"
-            // ariaLabel="infinity-spin-loading"
+            ariaLabel="infinity-spin-loading"
           />
         )}
       </div>

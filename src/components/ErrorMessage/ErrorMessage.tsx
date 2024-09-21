@@ -1,7 +1,10 @@
 import toast from "react-hot-toast";
-import PropTypes from "prop-types";
 
-function ErrorMessage({ toggleState }) {
+interface ErrorMessageProps {
+  toggleState: (isError:boolean)=>void;
+}
+
+const  ErrorMessage:React.FC<ErrorMessageProps>=({ toggleState }) =>{
   toast.error(`Error.Try again.`, {
     position: "top-left",
   });
@@ -10,6 +13,3 @@ function ErrorMessage({ toggleState }) {
 }
 export default ErrorMessage;
 
-ErrorMessage.propTypes = {
-  toggleState: PropTypes.func.isRequired,
-};
